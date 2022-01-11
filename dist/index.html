@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="favicon.ico"><title>vueweb</title><link href="static/css/chunk-752c6b7a.73010839.css" rel="prefetch"><link href="static/css/chunk-79af1b68.6a68a3ec.css" rel="prefetch"><link href="static/css/chunk-ddad4b30.62bf6e48.css" rel="prefetch"><link href="static/js/chunk-2d0abdee.3461c85d.js" rel="prefetch"><link href="static/js/chunk-2d0af052.c5242dce.js" rel="prefetch"><link href="static/js/chunk-2d0bd91e.eef22340.js" rel="prefetch"><link href="static/js/chunk-2d222cfc.137cbcad.js" rel="prefetch"><link href="static/js/chunk-2d225c72.3c8c17d7.js" rel="prefetch"><link href="static/js/chunk-2d22c828.43b9261b.js" rel="prefetch"><link href="static/js/chunk-2d237af5.1c69b408.js" rel="prefetch"><link href="static/js/chunk-2d2384ff.06b8891f.js" rel="prefetch"><link href="static/js/chunk-752c6b7a.f4491e29.js" rel="prefetch"><link href="static/js/chunk-79af1b68.62ba50b5.js" rel="prefetch"><link href="static/js/chunk-ddad4b30.1464f62d.js" rel="prefetch"><link href="static/css/app.a6f5ee8f.css" rel="preload" as="style"><link href="static/css/chunk-vendors.f581734e.css" rel="preload" as="style"><link href="static/js/app.fcf3eae3.js" rel="preload" as="script"><link href="static/js/chunk-vendors.c04a2656.js" rel="preload" as="script"><link href="static/css/chunk-vendors.f581734e.css" rel="stylesheet"><link href="static/css/app.a6f5ee8f.css" rel="stylesheet"></head><style>html,
+  body {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  body{
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+
+  .first-loading-wrp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    min-height: 90vh;
+  }
+
+  .first-loading-wrp>h1 {
+    font-size: 30px;
+    font-weight: bolder;
+  }
+
+  .first-loading-wrp .loading-wrp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 98px;
+  }
+
+  .dot {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    font-size: 64px;
+    transform: rotate(45deg);
+    animation: antRotate 1.2s infinite linear;
+  }
+
+  .dot i {
+    position: absolute;
+    display: block;
+    width: 28px;
+    height: 28px;
+    background-color: #1890ff;
+    border-radius: 100%;
+    opacity: 0.3;
+    transform: scale(0.75);
+    transform-origin: 50% 50%;
+    animation: antSpinMove 1s infinite linear alternate;
+  }
+
+  .dot i:nth-child(1) {
+    top: 0;
+    left: 0;
+  }
+
+  .dot i:nth-child(2) {
+    top: 0;
+    right: 0;
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+
+  .dot i:nth-child(3) {
+    right: 0;
+    bottom: 0;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+  }
+
+  .dot i:nth-child(4) {
+    bottom: 0;
+    left: 0;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+  }
+
+  @keyframes antRotate {
+    to {
+      -webkit-transform: rotate(405deg);
+      transform: rotate(405deg);
+    }
+  }
+
+  @-webkit-keyframes antRotate {
+    to {
+      -webkit-transform: rotate(405deg);
+      transform: rotate(405deg);
+    }
+  }
+
+  @keyframes antSpinMove {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes antSpinMove {
+    to {
+      opacity: 1;
+    }
+  }</style><body><noscript><strong>We're sorry but vueweb doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div class="first-loading-wrp" id="Loading"><div class="loading-wrp"><span class="dot dot-spin"><i></i> <i></i> <i></i> <i></i></span></div><h2>努力加载中...</h2></div><div id="app"></div><script src="static/js/chunk-vendors.c04a2656.js"></script><script src="static/js/app.fcf3eae3.js"></script></body></html>
