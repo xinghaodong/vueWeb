@@ -1,5 +1,5 @@
 <template>
-  <div class="index">欢迎您!
+  <div class="index">欢迎您!ada
     1</div>
 </template>
 <script>
