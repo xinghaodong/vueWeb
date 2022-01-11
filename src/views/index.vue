@@ -1,5 +1,6 @@
 <template>
-  <div class="index">欢迎阿!</div>
+  <div class="index">欢迎,我是首页!
+    1</div>
 </template>
 <script>
 export default {};
