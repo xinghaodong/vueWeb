@@ -1,7 +1,7 @@
 export default {
     namespaced: true,
     state: {
-        size: "def",
+        size: "small",
     },
     mutations: {
         /**

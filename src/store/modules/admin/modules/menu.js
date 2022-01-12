@@ -274,7 +274,7 @@ export default {
       // console.log(state.currentMenuIndex,state.itemsItem,'state.itemsItem')
     },
     /**
-     * 退出登录将 部分 state 值重置
+     * 退出登录/关闭除首页的所有标签页 将 部分 state 值重置 
      * @param {*} state 
      */
     logOut(state) {
@@ -378,7 +378,7 @@ export default {
      */
     Login({ commit }, userInfo) { //这里的commit 是解构写法
       return new Promise((resolve, reject) => { // 这里的Promise 是为了给业务组件调用时可以拿到返回值res或则error
-        api.post("/login", userInfo).then((res) => {
+        api.login(userInfo).then((res) => {
           if (res.code == "0") {
             window.localStorage.setItem("userToken", res.token);
             //给userName 赋值

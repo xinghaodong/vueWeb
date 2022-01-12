@@ -1,8 +1,8 @@
 <template>
   <div>
-    <el-button type="primary"  @click="add()">新增</el-button>
-    <el-button type="primary" >导入</el-button>
-    <el-button type="primary" >导出</el-button>
+    <el-button type="primary" @click="add()">新增</el-button>
+    <el-button type="primary">导入</el-button>
+    <el-button type="primary">导出</el-button>
     <div style="width: 260px; padding: 8px 0px 8px 0px; display: flex">
       <el-input
         v-model="search"
@@ -10,10 +10,7 @@
         clearable
         @change="userList()"
       ></el-input>
-      <el-button
-        @click="userList()"
-        type="primary"
-        style="margin-left: 15px"
+      <el-button @click="userList()" type="primary" style="margin-left: 15px"
         >查询</el-button
       >
     </div>
@@ -25,17 +22,14 @@
       <el-table-column prop="address" label="地址"> </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button  @click="handleEdit(scope.$index, scope.row)"
+          <el-button @click="handleEdit(scope.$index, scope.row)"
             >编辑</el-button
           >
           <el-popconfirm
             @confirm="delItem(scope.row)"
             title="这是一段内容确定删除吗？"
           >
-            <el-button
-              type="danger"
-              slot="reference"
-              style="margin-left: 10px"
+            <el-button type="danger" slot="reference" style="margin-left: 10px"
               >删除</el-button
             >
           </el-popconfirm>
@@ -138,33 +132,45 @@ export default {
   methods: {
     //删除
     delItem(row) {
-      api.post('/delete',row).then((res)=>{
-        if( res.code == 0 ){
-          this.$message.success("删除成功")
-          this.userList()
-        }else{
-          this.$message.error(res.message)
+      api.post("/delete", row).then((res) => {
+        if (res.code == 0) {
+          this.$message.success("删除成功");
+          this.userList();
+        } else {
+          this.$message.error(res.message);
         }
-      })
+      });
     },
     //获取列表
     userList() {
       this.loading = true;
-      api
-        .get("/userList", {
-          params: {
-            pageNum: this.currentPage,
-            pageSize: this.pageSize,
-            search: this.search,
-          },
-        })
-        .then((res) => {
-          if (res.code == 0) {
-            this.tableData = res.data.records;
-            this.total = res.data.total;
-          }
-          this.loading = false;
-        });
+      let params = {
+        pageNum: this.currentPage,
+        pageSize: this.pageSize,
+        search: this.search,
+      };
+      api.userList(params).then((res) => {
+        if (res.code == 0) {
+          this.tableData = res.data.records;
+          this.total = res.data.total;
+        }
+        this.loading = false;
+      });
+      // api
+      //   .get("/userList", {
+      //     params: {
+      //       pageNum: this.currentPage,
+      //       pageSize: this.pageSize,
+      //       search: this.search,
+      //     },
+      //   })
+      //   .then((res) => {
+      //     if (res.code == 0) {
+      //       this.tableData = res.data.records;
+      //       this.total = res.data.total;
+      //     }
+      //     this.loading = false;
+      //   });
     },
     add() {
       this.dialogVisible = true;
@@ -202,7 +208,7 @@ export default {
         .post("/editor", this.form)
         .then((res) => {
           if (res.code == 0) {
-            this.$message.success("修改成功")
+            this.$message.success("修改成功");
             this.dialogVisible = false;
             this.userList();
           }

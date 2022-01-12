@@ -20,11 +20,9 @@
 import { mapActions, mapState } from "vuex";
 
 export default {
-  inject: ["reload"],
   data() {
     return {
       options: [
-        { label: "默认", value: "default" },
         { label: "中", value: "medium" },
         { label: "小", value: "small" },
         { label: "最小", value: "mini" },
