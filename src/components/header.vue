@@ -28,7 +28,7 @@
         mode="horizontal"
       >
         <!--将子菜单抽取出来，做为一个子组件-->
-        <Menu :datas="menuItem" />
+        <Menu :datas="menuItem" style="height:50px;line-height:50px" />
       </el-menu>
     </div>
     <div class="headerRight">
@@ -116,8 +116,8 @@ export default {
   min-width: 75.5px !important;
 }
 .header {
-  height: 50px;
-  line-height: 50px;
+  height: 56px;
+  line-height: 56px;
   display: flex;
   justify-content: space-between;
   /* border-bottom: 1px solid #ebeef5; */

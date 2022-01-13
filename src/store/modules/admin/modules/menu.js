@@ -3,30 +3,31 @@ import api from "@/api/api";
 
 // 找到当前所点击的菜单的最高父节点 index 用来 绘制当前左侧菜单
 function recursion1(data, url) {
-  console.log(data, url)
+  console.log(data, url, 'sdsdadad')
   var result
-  //设置结果
   if (!data) {
-    return;//如果data传空，直接返回
+    return;
   }
-  // if (data.childNode) {
-  //   for (var i = 0; i < data.childNode.length; i++) {
-  //     let item = data.childNode[i];
-  //     if (item.url == url) {
-  //       result = i;
-  //       return result; //这里是实际返回的值，你可以只返回当前对象，或者指定当前对象的某个字段。
-  //     } else if (item.childNode) {
-  //       //如果有子集，则把子集作为参数重新执行本方法
-  //       result = recursion1(item, url);
-  //       //关键，千万不要直接return本方法，不然即使没有返回值也会将返回return，导致最外层循环中断，直接返回undefined,要有返回值才return才对
-  //       if (result) {
-  //         return result;
+  // for (var i = 0; i < data.length; i++) {
+  //   if (data[i].url == url) {
+  //     result = i;
+  //     console.log(result, 'resultresultresultresult')
+  //     return;
+  //   }
+  //   console.log("执行了么")
+  //   if (data[i].childNode && data[i].childNode.length > 0) {
+  //     for (let j = 0; j < data[i].childNode.length; j++) {
+  //       if (data[i].childNode[j].url === url) {
+  //         result = i;
+  //         return;
+  //       } else {
+  //         recursion1(data[i].childNode[j].childNode, url)
   //       }
   //     }
   //   }
   // }
-  // //如果执行循环中都没有return，则在此return
-  // return result;
+
+
 
   for (var i = 0; i < data.length; i++) {
     let item = data[i];
@@ -205,8 +206,9 @@ export default {
      */
     setActive1(state, data) {
       if (!data.url) {
-        let result = recursion1(state.menuItem, state.activeMenu);
-        console.log(result, 'resultresultresultresult')
+        state.activeMenu = data
+        let result = recursion1(state.menuItem, data);
+        console.log(result, 'result')
         state.currentMenuIndex = result
         state.itemsItem = state.menuItem[state.currentMenuIndex]
         return
@@ -358,7 +360,7 @@ export default {
     setTagsActions({ commit }, data) {
       commit("setTags", data)
       commit("setActive1", data)
-      console.log(data, 'setActive1setActive1')
+      console.log(data,'setActive1setActive1')
     },
     /**
      * 点击头部菜单设置左侧动态菜单

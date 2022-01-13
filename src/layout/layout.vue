@@ -46,7 +46,7 @@ export default {
   overflow: hidden;
   box-sizing: border-box;
   padding: 20px;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 56px);
 }
 .cont {
   flex: 1;
@@ -56,7 +56,7 @@ export default {
 }
 .header {
   padding: 0px !important;
-  height: 50px !important;
+  height: 56px !important;
   background: #fafbfc;
   z-index: 1;
   width: 100%;

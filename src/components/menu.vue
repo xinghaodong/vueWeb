@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <template v-for="(item,indexaaa) in datas">
+    <template v-for="(item, indexaaa) in datas">
       <!-- 二级级菜单 -->
       <el-submenu
         v-if="item.childNode && item.childNode.length > 0"
@@ -12,13 +12,16 @@
           <span>{{ item.menu_name }}</span>
         </template>
         <!-- 多级级菜单 递归自己 -->
-        <Menu :datas="item.childNode" @click.native="handlePath1(indexaaa)"></Menu>
+        <Menu
+          :datas="item.childNode"
+          @click.native="handlePath1(indexaaa)"
+        ></Menu>
       </el-submenu>
       <el-menu-item
         v-else
         :key="item.menu_name"
         :index="item.url + ''"
-        :class="item.menu_name == '首页' ? 'is50' : ''"
+        @click="handlePath(item)"
       >
         <template slot="title">
           <i
@@ -38,17 +41,17 @@ export default {
   props: ["datas"],
   data() {
     return {
-      indexaaa:0,
+      indexaaa: 0,
     };
   },
   mounted() {},
   methods: {
-    handlePath1(index){
-      console.log(index,'indexindex')
+    handlePath1(index) {
+      console.log(index, "indexindex");
     },
     ...mapActions("admin/menu", ["removeTagsActions", "setTagsActions"]),
     handlePath(item) {
-      console.log(item,'handlePathhandlePathhandlePathhandlePathhandlePath')
+      console.log(item, "handlePathhandlePathhandlePathhandlePathhandlePath");
       this.setTagsActions(item);
     },
   },
@@ -56,13 +59,7 @@ export default {
 </script>
 
 <style scoped>
-.header >>> .el-submenu__title,
-.el-menu--horizontal > .el-submenu .el-submenu__title {
-  height: 50px;
-  line-height: 50px;
-}
 .header >>> .el-submenu__title {
-  /* width: 145px; */
   min-width: 140px;
 }
 /* 首页 */
@@ -81,10 +78,6 @@ export default {
 }
 .header >>> .el-menu.el-menu--horizontal {
   border: none;
-}
-.header >>> .is50 {
-  height: 50px;
-  line-height: 50px;
 }
 .header >>> .el-menu--horizontal .el-menu .el-menu-item.is-active,
 .el-menu--horizontal .el-menu .el-submenu.is-active > .el-submenu__title {
