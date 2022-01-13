@@ -4,7 +4,7 @@ function resolve(dir) {
     return path.join(__dirname, dir)
 }
 module.exports = {
-    publicPath: process.env.VUE_APP_ENV == 'production'? '/vueWeb/' : './',
+    publicPath: './',
     outputDir: process.env.outputDir,  //根据当前启动的环境生成 生产或测试的包
     // 静态资源目录(js, css, img, fonts)
     assetsDir: 'static',
