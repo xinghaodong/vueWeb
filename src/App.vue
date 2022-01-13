@@ -16,7 +16,11 @@ export default {
   components: {},
   watch: {
     $route(to, from) {
+      console.log(from.path)
       if (from.path == "/Login") {
+        if( localStorage.getItem('vuex') ){
+          return
+        }
         this.setDynamicMenu("0"); //首页
       }
     },
