@@ -28,7 +28,7 @@
         mode="horizontal"
       >
         <!--将子菜单抽取出来，做为一个子组件-->
-        <Menu :datas="menuItem" style="height:50px;line-height:50px" />
+        <Menu :datas="menuItem" />
       </el-menu>
     </div>
     <div class="headerRight">

@@ -83,7 +83,7 @@ export default {
         icon: "user-solid"
       },
       {
-        menu_name: "菜单一",
+        menu_name: "我的设置",
         pid: 0,
         id: 29,
         url: "/monitoring",

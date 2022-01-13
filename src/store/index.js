@@ -14,7 +14,7 @@ export default new Vuex.Store({
   plugins: [
     createPersistedState({
       // 存储方式：localStorage、sessionStorage、cookies
-        storage: window.sessionStorage,
+        storage: window.localStorage,
         // 存储的 key 的key值
         // key: "store",
         // render(state) {
