@@ -137,26 +137,14 @@ export default {
           //     this.$message.error(res.message);
           //   }
           // })
-          //使用mapActions辅助函数
-          this.Login(this.loginForm).then((res) => {
-            if (res.code == "0") {
-              this.$message.success("登录成功");
-              this.$router.push(this.activeMenu);
-            } else {
-              this.$message.error(res.message);
-            }
-          });
-
-          // api.post("/login", this.loginForm).then((res) => {
+          //使用mapActions辅助函数 由于要上gitee gages 需要将接口注释掉
+          this.$router.push(this.activeMenu);
+          // this.Login(this.loginForm).then((res) => {
           //   if (res.code == "0") {
           //     this.$message.success("登录成功");
-          //     console.log(res);
-          //     window.localStorage.setItem("userToken", res.token);
-          //     console.log(localStorage.getItem("userToken"));
-          //     this.$router.push("/home");
+          //     this.$router.push(this.activeMenu);
           //   } else {
           //     this.$message.error(res.message);
-          //     console.log(res);
           //   }
           // });
         }

@@ -65,8 +65,8 @@ export default {
     topActive: '首页',
     //当前菜单路由名称
     activeMenu: '/index',
-    //登录人名称
-    userName: '',
+    //登录人名称 由于要上 gitee pages 无法提供接口能力 所以将他写死
+    userName: '邢浩东',
     //次顶部菜单tag列表
     tags: [
       { icon: "user-solid", id: 1, menu_name: "首页", pid: 1, url: "/index" },

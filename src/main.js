@@ -17,10 +17,11 @@ router.beforeEach((to, from, next) => {
   if (to.fullPath == "/Login") {
     next()
   } else {
-    const token = localStorage.getItem("userToken")
-    if (!token) {
-      next("/Login")
-    }
+    //由于要上gitee gages 需要将接口注释掉
+    // const token = localStorage.getItem("userToken")
+    // if (!token) {
+    //   next("/Login")
+    // }
   }
   next()
 });
