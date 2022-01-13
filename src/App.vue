@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from "vuex";
 export default {
   provide() {
     return {
@@ -16,8 +16,7 @@ export default {
   components: {},
   watch: {
     $route(to, from) {
-      console.log(to, from)
-      if( from.path == "/Login" ){
+      if (from.path == "/Login") {
         this.setDynamicMenu("0"); //首页
       }
     },
@@ -35,7 +34,7 @@ export default {
   },
   mounted() {},
   methods: {
-    ...mapActions('admin/menu', ['setDynamicMenu']),
+    ...mapActions("admin/menu", ["setDynamicMenu"]),
     reload() {
       (this.isRouterAlive = false),
         this.$nextTick(() => {

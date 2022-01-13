@@ -138,6 +138,7 @@ export default {
           //   }
           // })
           //使用mapActions辅助函数 由于要上gitee gages 需要将接口注释掉
+          window.localStorage.setItem("userToken", 'afjasdjiajiajdisjfiasd');
           this.$router.push(this.activeMenu);
           // this.Login(this.loginForm).then((res) => {
           //   if (res.code == "0") {

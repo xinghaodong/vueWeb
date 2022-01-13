@@ -1,33 +1,32 @@
 import api from "@/api/api";
 //这里使用了数据持久化这样就不会因为刷新页面后state里的数据丢失
 
-// 由于换了 Tabs 标签页组件 故这里新写了一个 
+// 找到当前所点击的菜单的最高父节点 index 用来 绘制当前左侧菜单
 function recursion1(data, url) {
-  console.log(data, url, 'sdsdadad')
+  console.log(data, url)
   var result
+  //设置结果
   if (!data) {
-    return;
+    return;//如果data传空，直接返回
   }
-  // for (var i = 0; i < data.length; i++) {
-  //   if (data[i].url == url) {
-  //     result = i;
-  //     console.log(result, 'resultresultresultresult')
-  //     return;
-  //   }
-  //   console.log("执行了么")
-  //   if (data[i].childNode && data[i].childNode.length > 0) {
-  //     for (let j = 0; j < data[i].childNode.length; j++) {
-  //       if (data[i].childNode[j].url === url) {
-  //         result = i;
-  //         return;
-  //       } else {
-  //         recursion1(data[i].childNode[j].childNode, url)
+  // if (data.childNode) {
+  //   for (var i = 0; i < data.childNode.length; i++) {
+  //     let item = data.childNode[i];
+  //     if (item.url == url) {
+  //       result = i;
+  //       return result; //这里是实际返回的值，你可以只返回当前对象，或者指定当前对象的某个字段。
+  //     } else if (item.childNode) {
+  //       //如果有子集，则把子集作为参数重新执行本方法
+  //       result = recursion1(item, url);
+  //       //关键，千万不要直接return本方法，不然即使没有返回值也会将返回return，导致最外层循环中断，直接返回undefined,要有返回值才return才对
+  //       if (result) {
+  //         return result;
   //       }
   //     }
   //   }
   // }
-
-
+  // //如果执行循环中都没有return，则在此return
+  // return result;
 
   for (var i = 0; i < data.length; i++) {
     let item = data[i];
@@ -206,9 +205,8 @@ export default {
      */
     setActive1(state, data) {
       if (!data.url) {
-        state.activeMenu = data
-        let result = recursion1(state.menuItem, data);
-        console.log(result, 'result')
+        let result = recursion1(state.menuItem, state.activeMenu);
+        console.log(result, 'resultresultresultresult')
         state.currentMenuIndex = result
         state.itemsItem = state.menuItem[state.currentMenuIndex]
         return
@@ -255,7 +253,6 @@ export default {
       let activeName = state.activeMenu;
       if (activeName === targetName) {
         tabs.forEach((tab, index) => {
-          console.log(tab, index)
           if (tab.url === targetName) {
             //下一个
             let nextTab = tabs[index + 1] || tabs[index - 1];
@@ -270,8 +267,7 @@ export default {
     },
     dynamicMenu(state, data) {
       state.currentMenuIndex = data//设置选中顶部菜单的下标
-       state.itemsItem = state.menuItem[data]
-      // console.log(state.currentMenuIndex,state.itemsItem,'state.itemsItem')
+      state.itemsItem = state.menuItem[data]
     },
     /**
      * 退出登录/关闭除首页的所有标签页 将 部分 state 值重置 
@@ -362,6 +358,7 @@ export default {
     setTagsActions({ commit }, data) {
       commit("setTags", data)
       commit("setActive1", data)
+      console.log(data, 'setActive1setActive1')
     },
     /**
      * 点击头部菜单设置左侧动态菜单

@@ -1,30 +1,33 @@
 <template>
   <div class="header">
-    <!-- 一级菜单 -->
-    <el-menu-item
-      v-if="!datas.childNode"
-      :index="datas.url + ''"
-      @click="handlePath(datas)"
-      :class="datas.menu_name == '首页' ? 'is50' : ''"
-    >
-      <template slot="title">
-        <i :class="datas.icon ? 'el-icon-' + datas.icon : 'el-icon-folder'"></i>
-        <span>{{ datas.menu_name }}</span>
-      </template>
-    </el-menu-item>
-    <!-- 二级菜单 -->
-    <el-submenu :index="datas.url + ''" class="sub-menu-item" v-else>
-      <template slot="title">
-        <i :class="datas.icon ? 'el-icon-' + datas.icon : 'el-icon-folder'"></i>
-        <span>{{ datas.menu_name }}</span>
-      </template>
-      <!-- 多级菜单 -->
-      <Menu
-        v-for="(childNode, i) in datas.childNode"
-        :datas="childNode"
-        :key="i"
-      />
-    </el-submenu>
+    <template v-for="(item,indexaaa) in datas">
+      <!-- 二级级菜单 -->
+      <el-submenu
+        v-if="item.childNode && item.childNode.length > 0"
+        :key="item.menu_name"
+        :index="item.url + ''"
+      >
+        <template slot="title">
+          <i :class="item.icon ? 'el-icon-' + item.icon : 'el-icon-folder'"></i>
+          <span>{{ item.menu_name }}</span>
+        </template>
+        <!-- 多级级菜单 递归自己 -->
+        <Menu :datas="item.childNode" @click.native="handlePath1(indexaaa)"></Menu>
+      </el-submenu>
+      <el-menu-item
+        v-else
+        :key="item.menu_name"
+        :index="item.url + ''"
+        :class="item.menu_name == '首页' ? 'is50' : ''"
+      >
+        <template slot="title">
+          <i
+            :class="item.icon ? 'el-icon-' + item.icon : 'el-icon-tickets'"
+          ></i>
+          <span>{{ item.menu_name }}</span>
+        </template>
+      </el-menu-item>
+    </template>
   </div>
 </template>
 
@@ -34,13 +37,18 @@ export default {
   name: "Menu",
   props: ["datas"],
   data() {
-    return {};
+    return {
+      indexaaa:0,
+    };
   },
-  mounted(){
-  },
+  mounted() {},
   methods: {
+    handlePath1(index){
+      console.log(index,'indexindex')
+    },
     ...mapActions("admin/menu", ["removeTagsActions", "setTagsActions"]),
     handlePath(item) {
+      console.log(item,'handlePathhandlePathhandlePathhandlePathhandlePath')
       this.setTagsActions(item);
     },
   },

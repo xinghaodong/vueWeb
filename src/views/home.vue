@@ -177,7 +177,6 @@ export default {
       this.form = {};
     },
     submitForm(index, formName) {
-      console.log(this.form, this.$qs);
       this.$refs[formName].validate((valid) => {
         if (valid) {
           if (index == 1) {
@@ -203,7 +202,6 @@ export default {
       });
     },
     redact() {
-      console.log(this.form, "this.formthis.formthis.form");
       api
         .post("/editor", this.form)
         .then((res) => {
@@ -218,12 +216,9 @@ export default {
         });
     },
     handleEdit(i, item) {
-      console.log(i, item, "编辑");
       this.addOrEditor = 2;
       this.form = item;
       this.dialogVisible = true;
-      // this.redact(this.addOrEditor, item);
-      // this.drawer = true
     },
     handleDelete() {},
     handleSizeChange(val) {

@@ -70,7 +70,7 @@ export default new router({
           meta: {
             title: "在岗监控",
           }
-        },
+         },
         {
           path: "siteRecord",
           name: "siteRecord",

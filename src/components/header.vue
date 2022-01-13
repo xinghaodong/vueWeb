@@ -18,16 +18,17 @@
       </div>
     </div>
     <div style="flex: 1">
+      <!-- 头部菜单 -->
       <el-menu
         style="display: flex"
         :default-active="activeMenu"
         router
         class="el-menu-demo"
-        menu-trigger="hover"
+        menu-trigger="click"
         mode="horizontal"
       >
-      <!--将子菜单抽取出来，做为一个子组件-->
-      <Menu v-for="(item) in menuItem" :key="item.menu_name" :datas="item"/>
+        <!--将子菜单抽取出来，做为一个子组件-->
+        <Menu :datas="menuItem" />
       </el-menu>
     </div>
     <div class="headerRight">
@@ -77,23 +78,15 @@ export default {
   mounted() {},
   methods: {
     ...mapMutations("admin/menu", ["modification", "logOut"]), //将 `this.modification()` 映射为` this.$store.commit('modification')`
-    ...mapActions("admin/menu", [
-      "removeTagsActions",
-      "setTagsActions",
-    ]),
+    ...mapActions("admin/menu", ["removeTagsActions"]),
     /**
      * 退出登录
      */
     handleClick() {
       this.logOut(); //重置 state 的值
       localStorage.clear();
+      sessionStorage.clear();
       this.$router.push("/Login");
-    },
-    handlePath(item, index) {
-      console.log(item, index,'item, indexitem, indexitem, index')
-      this.setTagsActions(item);
-      //设置左侧动态菜单
-       
     },
     /**
      * 收回左侧菜单
