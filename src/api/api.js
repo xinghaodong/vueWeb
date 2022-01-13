@@ -6,7 +6,8 @@ const request = axios.create({
     timeout: 50000
 })
 const baseUrl = process.env.VUE_APP_BASE_URL
-console.log(process.env.VUE_APP_BASE_URL, '当前环境')
+const ROOT_PATH  = "https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/examples" //折线图
+console.log(baseUrl, '当前环境')
 // request 拦截器
 // 可以自请求发送前对请求做一些处理
 // 比如统一加token，对请求参数统一加密
@@ -26,7 +27,7 @@ request.interceptors.response.use(
     response => {
         // 对响应数据做点什么，比如
         if (response.code == 404) {
-            //做些什么
+            //做些什么 跳转到404页面 等等
         }
         let res = response.data;
         // 如果是返回的文件
@@ -46,12 +47,11 @@ request.interceptors.response.use(
 )
 /** 
  * get方法，对应get请求 
- * @param {String} url [请求的url地址] 
- * @param {Object} params [请求时携带的参数] 
+ * @param {String} url 请求的url地址 
+ * @param {Object} params 请求时携带的参数
  */
 export const oGet = (url, params) => {
     return new Promise((resolve, reject) => {
-        console.log(url,'url')
         axios.get(url, {
             params: params
         })
@@ -65,8 +65,8 @@ export const oGet = (url, params) => {
 }
 /** 
  * post方法，对应post请求 
- * @param {String} url [请求的url地址] 
- * @param {Object} params [请求时携带的参数] 
+ * @param {String} url 请求的url地址
+ * @param {Object} params 请求时携带的参数
  */
 export const oPost = (url, params) => {
     return new Promise((resolve, reject) => {
@@ -82,11 +82,9 @@ export const oPost = (url, params) => {
 //接口方法 地址
 export default {
     //登录
-    login(params) {
-        return oPost(baseUrl+"/login", params)
-    },
+    login(params) { return oPost(baseUrl + "/login", params) },
     //用户管理列表
-    userList(params) {
-        return oGet(baseUrl+'/userList', params)
-    }
+    userList(params) { return oGet(baseUrl + '/userList', params) },
+    //获取首页折线图
+    getline(params) { return oGet(ROOT_PATH +'/data/asset/data/life-expectancy-table.json', params) }
 }

@@ -9,7 +9,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'// nprogress样式文件
 //配全局属性配置，在任意组件内可以使用this.$qs获取qs对象 
 Vue.prototype.$qs = qs
-Vue.use(router).use(ElementUI, { size: store.state.admin.size.size, zIndex: 3000 })//设置了按钮大小
+Vue.use(router).use(ElementUI, { size: store.state.admin.size.size, zIndex: 3000 })//动态设置了按钮大小
 Vue.config.productionTip = false
 //路由守卫 没有token 就跳转到login页
 router.beforeEach((to, from, next) => {
