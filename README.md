@@ -23,10 +23,15 @@ npm run serve
 npm run build
 ```
 ## 预览
+```
 https://xing-hao-dong.gitee.io/vue-web
+```
+
 ## 功能
 
 * vue-cli4 构建
+* axios 请求、响应拦截,封装
+* weeppack配置 生产、测试、开发 三套环境
 * 首屏加载等待动画
 * 分离的路由和菜单设置
 * 可折叠侧边栏

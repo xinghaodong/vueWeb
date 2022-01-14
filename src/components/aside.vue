@@ -1,7 +1,9 @@
 <template>
   <div :class="{ collapse: isCollapse }" class="menuC">
     <el-scrollbar style="heidth: 100%">
+      <!-- default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" -->
       <el-menu
+      class="el-menu-vertical-demo"
         style="width: 100%; border: 0px"
         router
         @open="handleOpen"
@@ -14,19 +16,21 @@
         active-text-color="#ffd04b"
       >
         <!-- 一级菜单下没有菜单的 -->
-        <div v-if="!itemsItem.childNode">
+        <span v-if="!itemsItem.childNode">
           <el-menu-item :index="itemsItem.url">
-            <i
-              :class="
-                itemsItem.icon
-                  ? 'el-icon-' + itemsItem.icon
-                  : 'el-icon-' + 'folder'
-              "
-            ></i>
-            <span v-if="!isCollapse">{{ itemsItem.menu_name }}</span>
+            <!-- <template slot="title"> -->
+              <i
+                :class="
+                  itemsItem.icon
+                    ? 'el-icon-' + itemsItem.icon
+                    : 'el-icon-' + 'folder'
+                "
+              ></i>
+              <span slot="title">{{ itemsItem.menu_name }}</span>
+            <!-- </template> -->
           </el-menu-item>
-        </div>
-        <div v-else>
+        </span>
+        <span v-else>
           <!-- 二级级菜单下还有子集(三级)  -->
           <template v-for="item in itemsItem.childNode">
             <el-submenu
@@ -41,25 +45,17 @@
                 <span>{{ item.menu_name }}</span>
               </template>
               <!-- 多级级菜单 递归Menu 组件 -->
-              <Menu :datas="item.childNode" ></Menu>
+              <Menu :datas="item.childNode"></Menu>
             </el-submenu>
             <!-- 二级级菜单下没有子集 -->
-            <el-menu-item
-              v-else
-              :key="item.menu_name"
-              :index="item.url + ''"
-            >
-              <template slot="title">
-                <i
-                  :class="
-                    item.icon ? 'el-icon-' + item.icon : 'el-icon-tickets'
-                  "
-                ></i>
-                <span>{{ item.menu_name }}</span>
-              </template>
+            <el-menu-item :index="item.url" :key="item.menu_name" v-else>
+              <i
+                :class="item.icon ? 'el-icon-' + item.icon : 'el-icon-tickets'"
+              ></i>
+              <span slot="title">{{ item.menu_name }}</span>
             </el-menu-item>
           </template>
-        </div>
+        </span>
       </el-menu>
     </el-scrollbar>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <template v-for="(item, indexaaa) in datas">
+    <template v-for="item in datas">
       <!-- 二级级菜单 -->
       <el-submenu
         v-if="item.childNode && item.childNode.length > 0"
@@ -12,10 +12,7 @@
           <span>{{ item.menu_name }}</span>
         </template>
         <!-- 多级级菜单 递归自己 -->
-        <Menu
-          :datas="item.childNode"
-          @click.native="handlePath1(indexaaa)"
-        ></Menu>
+        <Menu :datas="item.childNode"></Menu>
       </el-submenu>
       <el-menu-item
         v-else
@@ -40,18 +37,12 @@ export default {
   name: "Menu",
   props: ["datas"],
   data() {
-    return {
-      indexaaa: 0,
-    };
+    return {};
   },
   mounted() {},
   methods: {
-    handlePath1(index) {
-      console.log(index, "indexindex");
-    },
     ...mapActions("admin/menu", ["removeTagsActions", "setTagsActions"]),
     handlePath(item) {
-      console.log(item, "handlePathhandlePathhandlePathhandlePathhandlePath");
       this.setTagsActions(item);
     },
   },
