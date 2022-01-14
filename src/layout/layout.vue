@@ -9,7 +9,7 @@
         <Aside />
         <!-- 主体 内容 -->
         <div style="flex: 1; display: flex; flex-flow: column; overflow: auto">
-          <Breadcrumb />
+          <TabPane />
           <transition name="el-fade-in-linear">
             <keep-alive> <!-- 目前是将所有的主体 页面都缓存了 -->
               <router-view class="cont transition-box" v-show="show" />
@@ -24,12 +24,12 @@
 <script>
 import Header from "@/components/header";
 import Aside from "@/components/aside.vue";
-import Breadcrumb from "@/components/breadcrumb";
+import TabPane from "@/components/tabPane";
 export default {
   components: {
     Header,
     Aside,
-    Breadcrumb,
+    TabPane,
   },
   data() {
     return {

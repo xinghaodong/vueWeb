@@ -24,7 +24,7 @@
         :default-active="activeMenu"
         router
         class="el-menu-demo"
-        menu-trigger="click"
+        menu-trigger="hover"
         mode="horizontal"
       >
         <!--将子菜单抽取出来，做为一个子组件-->

@@ -44,7 +44,7 @@
 </template>
 <script>
 import { mapState, mapMutations, mapActions } from "vuex";
-import Contextmenu from "../components/contextmenu.vue";
+import Contextmenu from "./contextmenu.vue";
 import Sortable from "sortablejs";
 export default {
   components: {

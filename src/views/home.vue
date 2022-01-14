@@ -14,7 +14,7 @@
         >查询</el-button
       >
     </div>
-    <el-table :data="tableData" v-loading="loading" border stripe>
+    <el-table  :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)" v-loading="loading" border stripe>
       <el-table-column prop="id" sortable label="ID"> </el-table-column>
       <el-table-column prop="username" label="姓名"> </el-table-column>
       <el-table-column prop="age" label="年龄"> </el-table-column>
@@ -151,26 +151,11 @@ export default {
       };
       api.userList(params).then((res) => {
         if (res.code == 0) {
-          this.tableData = res.data.records;
+          this.tableData = res.data.list;
           this.total = res.data.total;
         }
         this.loading = false;
       });
-      // api
-      //   .get("/userList", {
-      //     params: {
-      //       pageNum: this.currentPage,
-      //       pageSize: this.pageSize,
-      //       search: this.search,
-      //     },
-      //   })
-      //   .then((res) => {
-      //     if (res.code == 0) {
-      //       this.tableData = res.data.records;
-      //       this.total = res.data.total;
-      //     }
-      //     this.loading = false;
-      //   });
     },
     add() {
       this.dialogVisible = true;

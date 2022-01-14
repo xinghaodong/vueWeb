@@ -7,7 +7,7 @@ const request = axios.create({
 })
 const baseUrl = process.env.VUE_APP_BASE_URL
 const ROOT_PATH  = "https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/examples" //折线图
-console.log(baseUrl, '当前环境')
+console.log(baseUrl, '当前环境','mock.apipost.cn为开发环境')
 // request 拦截器
 // 可以自请求发送前对请求做一些处理
 // 比如统一加token，对请求参数统一加密
@@ -84,7 +84,7 @@ export default {
     //登录
     login(params) { return oPost(baseUrl + "/login", params) },
     //用户管理列表
-    userList(params) { return oGet(baseUrl + '/userList', params) },
+    userList(params) { return oGet(baseUrl + '/app/mock/project/5e884b31-5ab0-474f-ad4a-ee0304ba4f3c/json', params) },
     //获取首页折线图
     getline(params) { return oGet(ROOT_PATH +'/data/asset/data/life-expectancy-table.json', params) }
 }
