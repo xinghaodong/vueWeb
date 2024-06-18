@@ -41,8 +41,7 @@ https://xing-hao-dong.gitee.io/vue-web
 * 模块化全局状态管理
 * 数据持久化：实现用户登录、路由菜单
 * 切换全局基础组件尺寸 
-* 页面载入进度条 
-* 测试
+* 页面载入进度条
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
