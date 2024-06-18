@@ -1,9 +1,9 @@
 <template>
   <div :class="{ collapse: isCollapse }" class="menuC">
-    <el-scrollbar style="heidth: 100%">
+    <el-scrollbar style="height: 100%">
       <!-- default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" -->
       <el-menu
-      class="el-menu-vertical-demo"
+        class="el-menu-vertical-demo"
         style="width: 100%; border: 0px"
         router
         @open="handleOpen"
@@ -19,14 +19,14 @@
         <span v-if="!itemsItem.childNode">
           <el-menu-item :index="itemsItem.url">
             <!-- <template slot="title"> -->
-              <i
-                :class="
-                  itemsItem.icon
-                    ? 'el-icon-' + itemsItem.icon
-                    : 'el-icon-' + 'folder'
-                "
-              ></i>
-              <span slot="title">{{ itemsItem.menu_name }}</span>
+            <i
+              :class="
+                itemsItem.icon
+                  ? 'el-icon-' + itemsItem.icon
+                  : 'el-icon-' + 'folder'
+              "
+            ></i>
+            <span slot="title">{{ itemsItem.menu_name }}</span>
             <!-- </template> -->
           </el-menu-item>
         </span>
@@ -48,7 +48,7 @@
               <Menu :datas="item.childNode"></Menu>
             </el-submenu>
             <!-- 二级级菜单下没有子集 -->
-            <el-menu-item :index="item.url" :key="item.menu_name" v-else>
+            <el-menu-item :index="item.url" :key="item.id" v-else>
               <i
                 :class="item.icon ? 'el-icon-' + item.icon : 'el-icon-tickets'"
               ></i>
