@@ -21,6 +21,7 @@ request.interceptors.request.use(config => {
     return Promise.reject(error)
 });
 
+
 // response 响应拦截器
 // 可以在接口响应后统一处理结果
 request.interceptors.response.use(
