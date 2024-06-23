@@ -219,18 +219,20 @@ export default {
     },
   },
 };
+// // 使用scss
+// .index {
+//   @extend %flex-center-row;
+//   @extend %unable-select;
+//   color: $color-primary;
+// }
+// .left {
+//   // padding-left: 10px;
+//   width: 100%;
+//   height: 90%;
+//   background: #fff;
+// }
 </script>
-<style lang="scss" scoped>
-// 使用scss
-.index {
-  @extend %flex-center-row;
-  @extend %unable-select;
-  color: $color-primary;
-}
-.left {
-  // padding-left: 10px;
-  width: 100%;
-  height: 90%;
-  background: #fff;
-}
+
+<style  scoped>
+
 </style>
