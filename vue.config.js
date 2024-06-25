@@ -12,9 +12,9 @@ module.exports = {
     css: {
         loaderOptions: {
             // 设置 scss 公用变量文件
-            sass: {
-                data: `@import '~@/assets/style/common.scss';`
-            }
+            // sass: {
+            //     data: `@import '~@/assets/style/common.scss';`
+            // }
         }
     },
     // 开发环境中的跨域配置
